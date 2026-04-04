@@ -1,12 +1,15 @@
 import streamlit as st
 import pandas as pd
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from controllers.database.database import db
 from controllers.database.encuesta import get_encuesta_entry_with_reference
 from controllers.database.const import COD_PROYECTO
 from controllers.database.data_base import get_productores_schema
 
-import streamlit as st
-import pandas as pd
+
+
 
 def render_seccion_dinamica(diccionario_seccion, nombre_llave):
     st.write(f"### {nombre_llave.replace('_', ' ').upper()}")
