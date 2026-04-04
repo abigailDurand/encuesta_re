@@ -5,10 +5,14 @@ from firebase_admin import credentials, firestore
 def connect_db():
     if not firebase_admin._apps:
         try:
-            key_dict = st.secrets["textkey"] 
-            cred = credentials.Certificate(dict(key_dict))
-        except Exception:
-            cred = credentials.Certificate("key.json")
+            if "textkey" in st.secrets:
+                secret_dict = dict(st.secrets["textkey"])
+                cred = credentials.Certificate(secret_dict)
+            else:
+                cred = credentials.Certificate("key.json")
+        except Exception as e:
+            st.error(f"Error de configuración de Firebase: {e}")
+            raise e
             
         firebase_admin.initialize_app(cred)
     
