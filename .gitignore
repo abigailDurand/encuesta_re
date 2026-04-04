@@ -1,0 +1,15 @@
+# Seguridad: Tu llave de Firebase
+key.json
+
+# Entorno Virtual: No queremos subir las 200MB de librerías a GitHub
+.venv/
+venv/
+env/
+
+# Basura de Python: Archivos temporales que se crean al ejecutar
+__pycache__/
+*.py[cod]
+
+# Archivos del Sistema
+.DS_Store
+Thumbs.db
