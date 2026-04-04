@@ -1,12 +1,15 @@
 import streamlit as st
 import firebase_admin
 from firebase_admin import credentials, firestore
-
 def connect_db():
     if not firebase_admin._apps:
         try:
             if "textkey" in st.secrets:
                 secret_dict = dict(st.secrets["textkey"])
+                
+                if "private_key" in secret_dict:
+                    secret_dict["private_key"] = secret_dict["private_key"].replace("\\n", "\n")
+                
                 cred = credentials.Certificate(secret_dict)
             else:
                 cred = credentials.Certificate("key.json")
@@ -17,5 +20,3 @@ def connect_db():
         firebase_admin.initialize_app(cred)
     
     return firestore.client()
-
-db = connect_db()
