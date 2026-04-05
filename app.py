@@ -152,7 +152,10 @@ if st.session_state.dni_validado:
                 datos_tecnicos[key_pob][categoria]["total"] = suma
 
             # Guardar en Firebase
-            db.collection("encuestas").add(datos_tecnicos)
-            st.success("✅ ¡Datos guardados exitosamente en Firebase!")
+            if db is not None:
+                db.collection("encuestas").add(datos_tecnicos)
+                st.success("✅ ¡Datos guardados exitosamente en Firebase!")
+            else:
+                st.error("❌ Error: No hay conexión a la base de datos. Verifica tus 'Secrets' en Streamlit Cloud.")
 else:
     st.warning("⚠️ Valide el DNI en el Paso 1 para habilitar el formulario técnico.")
