@@ -1,7 +1,6 @@
 from controllers.database.const import COD_PROYECTO
 PASTO_FORRAJE={
-    "especies": "", "con_riego": False, "sin_riego": False, "total_ha": 0.0,
-    "coordenadas": {"latitud": 0.0, "longitud": 0.0, "altitud": 0}
+    "especies": "", "con_riego": False, "sin_riego": False, "total_ha": 0.0
 }
 INFRAESTRUCTURA={
     "cuenta": False, "estado_actual":{"bueno": False, "regular": False, "deficiente": False} 
